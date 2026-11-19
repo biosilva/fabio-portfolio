@@ -1,0 +1,153 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CaseStudy from "../components/CaseStudy.astro";
+import CaseHero from "../components/CaseHero.astro";
+import Figure from "../components/Figure.astro";
+import Intro from "../components/Intro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import FeatureColumns from "../components/FeatureColumns.astro";
+import FeatureBox from "../components/FeatureBox.astro";
+import NextProject from "../components/NextProject.astro";
+
+import hero from "../assets/images/banking-suite/hero.png";
+import eloungeDesktop from "../assets/images/banking-suite/elounge-desktop.png";
+import processDiagram from "../assets/images/banking-suite/process-diagram.png";
+import twoApps from "../assets/images/banking-suite/two-apps.png";
+import sizeSpeedSync from "../assets/images/banking-suite/size-speed-sync.png";
+import compare1 from "../assets/images/banking-suite/compare-1.png";
+import compare2 from "../assets/images/banking-suite/compare-2.png";
+import darkMode from "../assets/images/banking-suite/dark-mode.png";
+---
+
+<BaseLayout
+  title="Banking Suite & eLounge: award-winning e-banking — Fábio Silva"
+  description="Case study: Banking Suite and eLounge, a modular white-label e-banking platform for bank CIC that won Best of Swiss Web and Best of Swiss Apps 2020."
+>
+  <CaseHero
+    title="Banking Suite & eLounge: an award-winning e-banking platform for bank CIC"
+    lead="What started as an e-banking project for bank CIC became a product. Banking Suite is a modular, white-label platform built to scale to other banks, delivered alongside eLounge, CIC’s own e-banking. Winner of Best of Swiss Web and Best of Swiss Apps 2020."
+    meta="Senior Interaction Designer · bank CIC, via ti&m · 2020"
+  />
+
+  <CaseStudy>
+    <div class="section stack">
+      <Figure src={hero} alt="Banking Suite account overview with balance chart and transactions" priority />
+      <Intro
+        items={[
+          {
+            label: "About",
+            text: "Two projects in parallel: Banking Suite, a sellable white-label product, and eLounge, the tailored e-banking for CIC.",
+          },
+          {
+            label: "In brief",
+            text: "Keep two large projects moving together, in sync and async, without losing speed.",
+          },
+          {
+            label: "Impact",
+            text: "An award-winning platform in 10 months, with a modular setup the bank keeps extending.",
+          },
+        ]}
+      />
+    </div>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Goals" title="Where it all began.">
+        <p>
+          CIC came to us wanting a full-fledged e-banking. From ti&amp;m’s side, we saw a bigger opportunity: build it as
+          a product, Banking Suite, that could later be sold to other banks.
+        </p>
+      </SectionHeader>
+      <Figure src={eloungeDesktop} alt="eLounge investment overview in CIC branding" />
+    </section>
+
+    <section class="section stack">
+      <SectionHeader
+        eyebrow="Process"
+        title="Scope came from workshops with the bank, the approach from Design Thinking, and delivery from two-week sprints."
+      />
+      <FeatureColumns
+        items={[
+          {
+            title: "Two projects, hand in hand.",
+            text: "The platform had to let users do almost anything, at any time: check accounts and transactions, bank across institutions with multibanking, and manage rights for private and company users. The challenge was deciding which features to include and how to structure them so the product stayed clear despite its breadth. To define the scope, we ran dozens of workshops together with the bank, bringing together requirements and product owners from both CIC and ti&m.",
+          },
+          {
+            title: "Kick-off: the ti&m garage.",
+            text: "We started in ti&m’s garage, the UX phase before development, and worked with Design Thinking: a set of methods marked by user orientation, visualisation, simulation, and an iterative, often exploratory way of working. Its five stages gave the phase its shape: empathise, define, ideate, prototype, test. We began with interviews with experts, contextual inquiry, and personas and scenarios, to understand the users and frame the problem. Mind mapping and storyboards helped us generate and shape ideas. Prototypes and tests then ran as a loop, so ideas were checked early instead of assumed. The storyboard became the basis for the roadmap, which we defined together with the bank at the start of the project.",
+          },
+          {
+            title: "Sprint by sprint.",
+            text: "Development then ran in two-week sprints, following Scrum. Each sprint began with backlog grooming and sprint planning (user stories and tasks), and with a “definition of done” agreed up front. Unit tests and usability tests ran during the sprint, which closed with a review and a retrospective. After every sprint, CIC formally signed off the results against that definition of done, then had time to flag detail corrections, which went into the next sprint. The rhythm was designed so that a new product could roll out on the platform every six weeks.",
+          },
+        ]}
+      />
+      <Figure
+        src={processDiagram}
+        alt="Process diagram: Garage (Design Thinking from empathy to tested ideas), Sprints (two-week cycles signed off by the bank), Launch (a new product every six weeks)"
+      />
+      <div class="grid-2 two-boxes">
+        <FeatureBox title="Banking Suite" layout="stack">
+          <p slot="text">
+            We built the functionality and, on the front end, a white label based on a design system, so the product can
+            be restyled for other banks and scale. See Pipe project (availabe soon).
+          </p>
+        </FeatureBox>
+        <FeatureBox title="eLounge for bank CIC" layout="stack">
+          <p slot="text">
+            Built in close collaboration with the bank, which agreed requirements, design and functionality with us and
+            signed off every sprint.
+          </p>
+        </FeatureBox>
+      </div>
+      <Figure src={twoApps} alt="Banking Suite mobile app in dark theme next to the eLounge app in CIC branding" />
+    </section>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Challenge" title="Size, speed and sync.">
+        <p>
+          Two large projects had to move forward at once. That meant keeping Banking Suite and eLounge in step, keeping
+          ideas aligned in sync when it mattered and async when it didn’t, and not losing speed along the way.
+        </p>
+      </SectionHeader>
+      <Figure
+        src={sizeSpeedSync}
+        alt="Illustrations: Size — two large projects; Speed — both moving forward sprint by sprint; Sync — aligned on ideas, async when needed"
+      />
+    </section>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Solution" title="One platform, two expressions">
+        <p>
+          The same functionality shows up in both: Banking Suite as the neutral, white-label product, and eLounge as
+          CIC's branded e-banking. Compare them below.
+        </p>
+      </SectionHeader>
+      <Figure src={compare1} alt="eLounge mobile screens in CIC red: investments, quick access and accounts" />
+      <Figure src={compare2} alt="Banking Suite mobile screens in neutral white-label styling" />
+    </section>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Outcome & future steps" title="Delivered and still evolving.">
+        <p>
+          The initial platform was delivered in 10 months and won Best of Swiss Web and Best of Swiss Apps 2020. Its
+          modular setup has let the bank keep adding features: a robo-advisor, multibanking, digital identification, an
+          open banking connection and a module for external asset managers. I also explored a dark-mode direction
+          (mobile preview below) as a look at where the platform could go next.
+        </p>
+      </SectionHeader>
+      <Figure src={darkMode} alt="Dark-mode exploration of the wealth overview on a phone" />
+    </section>
+  </CaseStudy>
+
+  <NextProject current="bankingsuite_elounge" />
+</BaseLayout>
+
+<style>
+  .two-boxes {
+    gap: 1rem;
+  }
+  .two-boxes > :global(*) {
+    height: 100%;
+    align-items: start;
+  }
+</style>

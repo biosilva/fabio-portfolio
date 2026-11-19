@@ -1,0 +1,58 @@
+---
+import Icon, { type IconName } from "./Icon.astro";
+
+interface Props {
+  items: { icon?: IconName; title?: string; text: string }[];
+}
+const { items } = Astro.props;
+---
+
+<ul class="columns">
+  {
+    items.map((i) => (
+      <li>
+        <Icon name={i.icon ?? "circle-check"} size={20} class="icon" />
+        {i.title && <h3 class="title">{i.title}</h3>}
+        <p class:list={[{ muted: !!i.title }]}>{i.text}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: var(--content);
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2.5rem 2rem 3.5rem;
+    border-left: 1px solid var(--line);
+    font-size: var(--fs-small);
+    line-height: 1.6;
+  }
+  li :global(.icon) {
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .title {
+    font-size: var(--fs-small);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+  }
+  @media (max-width: 809.98px) {
+    .columns {
+      grid-template-columns: 1fr;
+    }
+    li {
+      padding: 1.75rem 0 1.75rem 1.5rem;
+    }
+  }
+</style>

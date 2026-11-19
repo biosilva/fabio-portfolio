@@ -1,0 +1,48 @@
+---
+interface Props {
+  items: { label: string; text: string }[];
+}
+const { items } = Astro.props;
+---
+
+<dl class="intro">
+  {
+    items.map((i) => (
+      <div class="row">
+        <dt>{i.label}</dt>
+        <dd>{i.text}</dd>
+      </div>
+    ))
+  }
+</dl>
+
+<style>
+  .intro {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1.5rem;
+    padding-block: 2rem 3rem;
+    border-top: 1px solid var(--line);
+  }
+  dt {
+    font-size: var(--fs-small);
+  }
+  dd {
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  @media (max-width: 479.98px) {
+    .row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      padding-block: 1.5rem 2rem;
+    }
+  }
+</style>

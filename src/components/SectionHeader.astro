@@ -1,0 +1,45 @@
+---
+/** Centered "eyebrow + serif heading + body" block used throughout case studies. */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  align?: "center" | "left";
+}
+const { eyebrow, title, align = "center" } = Astro.props;
+---
+
+<div class:list={["section-header", align]}>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2 class="h2" set:html={title} />
+  {
+    Astro.slots.has("default") && (
+      <div class="body">
+        <slot />
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .section-header {
+    display: grid;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: var(--text-column);
+    margin-inline: auto;
+  }
+  .center {
+    text-align: center;
+  }
+  .left {
+    max-width: none;
+  }
+  .body {
+    display: grid;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+</style>

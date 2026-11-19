@@ -1,0 +1,25 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import { getNextProject } from "../data/projects";
+
+interface Props {
+  current: string;
+}
+const next = getNextProject(Astro.props.current);
+---
+
+<section class="next container" aria-labelledby="next-heading">
+  <h2 id="next-heading" class="h2">Next project</h2>
+  <ProjectCard project={next} />
+</section>
+
+<style>
+  .next {
+    display: grid;
+    gap: 2rem;
+    margin-top: var(--section-gap);
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+    border-top: 1px solid var(--line);
+  }
+</style>

@@ -1,0 +1,18 @@
+---
+/** Vertical rhythm wrapper for case-study sections. */
+---
+
+<article class="case-study">
+  <slot />
+</article>
+
+<style>
+  .case-study {
+    display: grid;
+    gap: var(--section-gap);
+    padding-bottom: 1rem;
+  }
+  .case-study > :global(*) {
+    min-width: 0;
+  }
+</style>

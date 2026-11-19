@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  lead: string;
+  meta: string;
+}
+const { title, lead, meta } = Astro.props;
+---
+
+<header class="hero container">
+  <h1 class="h1">{title}</h1>
+  <p class="lead">{lead}</p>
+  <p class="meta">{meta}</p>
+</header>
+
+<style>
+  .hero {
+    display: grid;
+    gap: 1.5rem;
+    padding-top: clamp(2rem, 5vw, 3.5rem);
+    padding-bottom: clamp(3rem, 7vw, 6rem);
+  }
+  .h1 {
+    max-width: 22ch;
+  }
+  .lead {
+    max-width: 62ch;
+    margin-top: 0.25rem;
+  }
+  .meta {
+    padding: 0.25rem 0 0.25rem 0.75rem;
+    border-left: 2px solid var(--accent);
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+  }
+</style>

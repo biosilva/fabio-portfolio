@@ -1,0 +1,314 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+
+const EMAIL = "fdefabiomiguel@gmail.com";
+
+interface Role {
+  title: string;
+  meta: string;
+  groups: { heading?: string; bullets: string[] }[];
+}
+
+const roles: Role[] = [
+  {
+    title: "Product Designer @ True Wealth AG",
+    meta: "Zürich, 2022 – Present",
+    groups: [
+      {
+        bullets: [
+          "Own the end-to-end design of a digital investment app (35'000 users, CHF 3 billion AUM), working daily with product owners and developers in an agile team.",
+          "Redesigned the entire app to scale for new products, cutting client-service questions by 25%.",
+          "Raised completion of funding and recurring payments from 25% to 50%, through usability testing and iteration.",
+          "Led concept-to-launch design of Pillar 3a (Swiss retirement savings), the Child portfolio and Vested benefits, bringing in 10% of new customers within 6 months.",
+          "Built and maintain the design system, keeping app and web consistent and speeding up design-to-dev handover.",
+          "Used Claude Design to prototype pages such as documents (statements, tax documents), cutting design time from days to hours.",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Interaction Designer @ ti&m AG",
+    meta: "Zürich, 2014 – 2022",
+    groups: [
+      {
+        heading: "Senior, 2019 – 2022",
+        bullets: [
+          "Designed the full-fledged white-label Banking and Trading Suites, built in-house to meet the needs of future clients.",
+          "Built the shared design system that let us adapt flows and branding to each new client in a couple of hours instead of months.",
+        ],
+      },
+      {
+        heading: "Junior and Professional, 2014 – 2019",
+        bullets: [
+          "Designed end-to-end responsive platforms with stakeholders and developers, running usability tests and concept workshops.",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Founder @ doorz GmbH",
+    meta: "Zürich, 2016 – 2019",
+    groups: [
+      {
+        bullets: [
+          "Designed and took to market a platform and iOS app, from discovering an experience to writing a review.",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Co-founder @ LivXP",
+    meta: "Zürich, 2019",
+    groups: [{ bullets: ["Designed the native app and brand language for event creators and end users."] }],
+  },
+  {
+    title: "Earlier roles",
+    meta: "Zürich / Porto, 2012 – 2014",
+    groups: [
+      {
+        bullets: [
+          "Branding Designer, Scholtysik & Partner AG (2014) and freelance graphic designer: branding concepts, logotypes, websites and print.",
+        ],
+      },
+    ],
+  },
+];
+
+const education = [
+  { degree: "Master's in Multimedia Design", school: "University of Coimbra", years: "2012 – 2014" },
+  { degree: "Bachelor's in Multimedia Design", school: "University of Coimbra", years: "2008 – 2012" },
+];
+
+const lists = [
+  {
+    title: "Core skills",
+    items: [
+      "Product design",
+      "UX design",
+      "UI design",
+      "User flows",
+      "Information architecture",
+      "Visual design",
+      "Motion design",
+      "Design systems",
+      "Prototyping & wireframing",
+      "Interactive prototyping",
+      "Usability testing",
+      "Accessibility (W3C)",
+      "Agile & Scrum",
+      "HTML & CSS",
+    ],
+  },
+  {
+    title: "Tools",
+    items: [
+      "Figma",
+      "Claude & Claude Design",
+      "Adobe Creative Suite",
+      "Sketch",
+      "Jira & Confluence",
+      "Google Workspace",
+      "Microsoft Teams",
+    ],
+  },
+  {
+    title: "Languages",
+    items: ["English (proficient)", "German (conversational)", "Portuguese (native)", "Spanish (basic)"],
+  },
+];
+---
+
+<BaseLayout
+  title="CV — Fábio Silva"
+  description="CV of Fábio Silva, product designer with 12 years of experience in wealth management, banking and trading. True Wealth, ti&m, doorz."
+>
+  <header class="hero container">
+    <h1 class="h1">Product designer making complex products feel simple.</h1>
+    <p class="lead">
+      Product designer with 12 years of experience turning complex, data-heavy requirements into clear, scalable
+      products. Most of my work has been in wealth management, banking and trading, from a 35'000-user investment app at
+      True Wealth to white-label banking and trading suites at ti&amp;m. I combine user-centred design, design systems and
+      close collaboration with product and engineering.
+    </p>
+    <p class="based">Based in Zug, Switzerland</p>
+  </header>
+
+  <div class="cv container">
+    <div class="content">
+      <section aria-labelledby="employment">
+        <h2 id="employment" class="h2 section-title">Employment history</h2>
+        <div class="roles">
+          {
+            roles.map((r) => (
+              <article class="block">
+                <h3 class="role-title">{r.title}</h3>
+                <p class="role-meta">{r.meta}</p>
+                {r.groups.map((g) => (
+                  <div class="group">
+                    {g.heading && <h4 class="group-title">{g.heading}</h4>}
+                    <ul>
+                      {g.bullets.map((b) => (
+                        <li>{b}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section aria-labelledby="education">
+        <h2 id="education" class="h2 section-title">Education</h2>
+        <ul class="block education">
+          {
+            education.map((e) => (
+              <li>
+                {e.degree}
+                <span>
+                  {e.school}&nbsp;&nbsp;{e.years}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <div class="lists">
+        {
+          lists.map((l) => (
+            <section aria-label={l.title}>
+              <h2 class="h2 section-title">{l.title}</h2>
+              <ul class="block plain">
+                {l.items.map((i) => (
+                  <li>{i}</li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
+
+      <section class="contact" aria-labelledby="contact">
+        <h2 id="contact" class="h2">Contact</h2>
+        <a href={`mailto:${EMAIL}`}><Icon name="mail" size={18} />{EMAIL}</a>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    gap: 1.5rem;
+    padding-top: clamp(2rem, 5vw, 3.5rem);
+  }
+  .h1 {
+    max-width: 22ch;
+  }
+  .lead {
+    max-width: 64ch;
+    font-size: var(--fs-body);
+  }
+  .based {
+    padding: 0.25rem 0 0.25rem 0.75rem;
+    border-left: 2px solid var(--accent);
+    font-size: var(--fs-xs);
+    color: var(--text-secondary);
+  }
+
+  .cv {
+    padding-top: clamp(4rem, 8vw, 6rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+  }
+  .content {
+    display: grid;
+    gap: clamp(3.5rem, 6vw, 5rem);
+    max-width: 900px;
+  }
+  .section-title {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+  }
+
+  .roles {
+    display: grid;
+    gap: 2rem;
+  }
+  .block {
+    padding: 0.75rem 0 1rem 1.25rem;
+    border-left: 1px solid var(--line);
+  }
+  .role-title {
+    font-size: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+  }
+  .role-meta {
+    margin-bottom: 1.25rem;
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+  }
+  .group + .group {
+    margin-top: 1.25rem;
+  }
+  .group-title {
+    margin-bottom: 0.5rem;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+  }
+  .block ul,
+  .education {
+    display: grid;
+    gap: 0.25rem;
+    padding-left: 1.25rem;
+    font-size: var(--fs-xs);
+    line-height: 1.6;
+  }
+  .education {
+    gap: 1.25rem;
+    padding-left: 2.5rem;
+  }
+  .education span {
+    display: block;
+    color: var(--text-secondary);
+  }
+
+  .lists {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .plain {
+    padding-left: 1.25rem;
+    list-style: none;
+    font-size: var(--fs-xs);
+    line-height: 1.6;
+  }
+
+  .contact {
+    display: grid;
+    gap: 1.25rem;
+    padding-top: clamp(3rem, 5vw, 4rem);
+    border-top: 1px solid var(--tertiary);
+  }
+  .contact a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: var(--fs-xs);
+    text-decoration: none;
+  }
+  .contact a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 809.98px) {
+    .lists {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

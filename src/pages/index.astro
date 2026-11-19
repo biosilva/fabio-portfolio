@@ -1,0 +1,173 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects";
+
+const facts = [
+  { label: "Currently", value: "Product Designer, True Wealth" },
+  { label: "Located", value: "Zug, Switzerland" },
+  { label: "Originally", value: "From Portugal" },
+];
+
+const stats = [
+  { value: "8", label: "years in banking and investing" },
+  { value: "2", label: "best of Swiss awards, Web and Apps 2020" },
+  { value: "35'000", label: "users on the redesigned True Wealth app" },
+  { value: "2", label: "ventures founded: doorz and LivXP" },
+];
+
+const CV_URL = "https://drive.google.com/file/d/1XbfuvRWqPpcSxb9COh5zrRzuUEw14BqB/view?usp=sharing";
+---
+
+<BaseLayout
+  title="Fábio Silva: product designer for investing, trading and banking"
+  description="Fábio Silva, product designer in Zug, Switzerland. 12 years, mostly in banking and investing. Case studies: True Wealth, Trading Workbench, Banking Suite."
+>
+  <section class="intro container">
+    <h1 class="h1">
+      Product designer making <em>investing, trading &amp; banking</em> feel simple.
+    </h1>
+
+    <div class="about">
+      <dl class="facts">
+        {
+          facts.map((f) => (
+            <div>
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <div class="bio">
+        <p>
+          Hey, I’m Fábio. I spent eight years at ti&amp;m designing banking and trading products, including an
+          e-banking platform that won Best of Swiss Web and Best of Swiss Apps. Along the way I founded doorz and
+          co-founded LivXP, so I’ve also built products from zero.
+        </p>
+        <p>
+          Today I’m a product designer at True Wealth, where I recently redesigned the app for 35’000 users around one
+          investment strategy. Beyond finance, I’ve also worked in retail. The domain changes; the job doesn’t: turning
+          complex, data-heavy workflows into products people can trust.
+        </p>
+      </div>
+    </div>
+
+    <ul class="stats">
+      {
+        stats.map((s) => (
+          <li>
+            <span class="number">{s.value}</span>
+            <span class="label">{s.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <a class="button" href={CV_URL} target="_blank" rel="noopener">View CV</a>
+  </section>
+
+  <section id="work" class="work container" aria-labelledby="work-heading">
+    <h2 id="work-heading" class="h2">Selected case studies</h2>
+    <div class="cards">
+      {projects.map((p) => <ProjectCard project={p} />)}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    padding-top: clamp(2rem, 5vw, 3.5rem);
+  }
+  .h1 {
+    max-width: 21ch;
+  }
+
+  .about {
+    display: grid;
+    grid-template-columns: 185px 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  }
+  .facts {
+    display: grid;
+    gap: 1.25rem;
+    align-content: start;
+    margin: 0;
+  }
+  .facts dt {
+    color: var(--text-secondary);
+  }
+  .facts dd {
+    margin: 0.25rem 0 0;
+  }
+  .bio {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+    max-width: 800px;
+    line-height: 1.6;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding: clamp(2rem, 4vw, 3rem) 0 0;
+    border-top: 1px solid var(--line-accent);
+    list-style: none;
+  }
+  .stats li {
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+  }
+  .number {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .label {
+    max-width: 16em;
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  .button {
+    display: inline-block;
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding: 0.625rem 1.25rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: var(--fs-small);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  .button:hover {
+    background: #9c0000;
+  }
+
+  .work {
+    display: grid;
+    gap: 2rem;
+    padding-top: clamp(5rem, 9vw, 7rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+  }
+  .cards {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 809.98px) {
+    .about {
+      grid-template-columns: 1fr;
+    }
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

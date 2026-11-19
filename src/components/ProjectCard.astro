@@ -1,0 +1,130 @@
+---
+import { getImage } from "astro:assets";
+import type { Project } from "../data/projects";
+import Pills from "./Pills.astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  project: Project;
+  headingLevel?: "h2" | "h3";
+}
+
+const { project, headingLevel: Heading = "h3" } = Astro.props;
+
+// Art direction: wide screenshot on desktop/tablet, square crop on phones.
+const [desktop, mobile] = await Promise.all([
+  getImage({ src: project.image, widths: [640, 960, 1280, 1600], format: "webp" }),
+  getImage({ src: project.imageMobile, widths: [480, 800, 1125], format: "webp" }),
+]);
+---
+
+<article class="card">
+  <div class="text">
+    <p class="meta">{project.number} — {project.client} · {project.year}</p>
+    <Heading class="h3 title">
+      <a href={`/${project.slug}`}>{project.title}</a>
+    </Heading>
+    <Pills items={project.tags} />
+    <span class="cta" aria-hidden="true">View case study <Icon name="arrow-right" size={18} /></span>
+  </div>
+  <div class="media">
+    <picture>
+      <source media="(max-width: 809.98px)" srcset={mobile.srcSet.attribute} sizes="100vw" type="image/webp" />
+      <source srcset={desktop.srcSet.attribute} sizes="(min-width: 1200px) 640px, 60vw" type="image/webp" />
+      <img
+        src={desktop.src}
+        alt={project.imageAlt}
+        width={project.image.width}
+        height={project.image.height}
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+  </div>
+</article>
+
+<style>
+  .card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    min-height: clamp(420px, 36vw, 500px);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .meta {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xs);
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .title a {
+    text-decoration: none;
+  }
+  /* Whole card is clickable via the heading link */
+  .title a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--fs-xs);
+    font-weight: 500;
+  }
+  .cta :global(svg) {
+    transition: transform 0.3s ease;
+  }
+  .media {
+    display: grid;
+    place-items: center;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    background: var(--box-surface);
+    overflow: hidden;
+  }
+  .media img {
+    width: 100%;
+    max-width: 560px;
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .card:hover .media img {
+    transform: scale(1.03);
+  }
+  .card:hover .cta :global(svg) {
+    transform: translateX(4px);
+  }
+  .card:focus-within {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .title a:focus-visible {
+    outline: none;
+  }
+
+  @media (max-width: 809.98px) {
+    .card {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+    .media {
+      order: -1;
+      padding: 1.5rem 1.5rem 0;
+      align-items: end;
+    }
+    .media img {
+      max-width: 360px;
+    }
+  }
+</style>

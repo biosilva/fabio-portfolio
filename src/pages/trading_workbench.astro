@@ -1,0 +1,202 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CaseStudy from "../components/CaseStudy.astro";
+import CaseHero from "../components/CaseHero.astro";
+import Figure from "../components/Figure.astro";
+import Intro from "../components/Intro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import FeatureColumns from "../components/FeatureColumns.astro";
+import FeatureBox from "../components/FeatureBox.astro";
+import NextProject from "../components/NextProject.astro";
+import Icon from "../components/Icon.astro";
+
+import hero from "../assets/images/trading-workbench/hero.png";
+import wireframe1 from "../assets/images/trading-workbench/wireframe-1.png";
+import wireframe2 from "../assets/images/trading-workbench/wireframe-2.png";
+import wireframe3 from "../assets/images/trading-workbench/wireframe-3.png";
+import wireframe4 from "../assets/images/trading-workbench/wireframe-4.png";
+import prototype from "../assets/images/trading-workbench/prototype.png";
+import dark1 from "../assets/images/trading-workbench/dashboard-dark-1.png";
+import dark2 from "../assets/images/trading-workbench/dashboard-dark-2.png";
+import dashboards from "../assets/images/trading-workbench/dashboards.png";
+import dragAndDrop from "../assets/images/trading-workbench/drag-and-drop.png";
+import atAGlance from "../assets/images/trading-workbench/at-a-glance.png";
+import mobile from "../assets/images/trading-workbench/mobile.png";
+
+const wireframes = [
+  { src: wireframe1, alt: "Wireframe: portfolio overview dashboard" },
+  { src: wireframe2, alt: "Wireframe: dashboard with widget areas highlighted" },
+  { src: wireframe3, alt: "Wireframe: empty dashboard ready for widgets" },
+  { src: wireframe4, alt: "Wireframe: market overview" },
+];
+---
+
+<BaseLayout
+  title="Trading Workbench: designing a trading platform for VZ — Fábio Silva"
+  description="Case study: designing Trading Workbench, a responsive trading platform with real-time data and customisable dashboards, built at ti&m and delivered to VZ."
+>
+  <CaseHero
+    title="Trading Workbench: a trading platform for beginners and professionals"
+    lead="Market information and trading, brought closer to everyday banking. A responsive platform with real-time data and fully customisable dashboards, designed at ti&m and delivered to VZ."
+    meta="Senior Interaction Designer · VZ, via ti&m · 2021"
+  />
+
+  <CaseStudy>
+    <div class="section stack">
+      <Figure src={hero} alt="Trading Workbench portfolio overview dashboard" priority />
+      <Intro
+        items={[
+          {
+            label: "About",
+            text: "Trading Workbench is a responsive trading platform for banks, built at ti&m for beginners and professionals alike. It covers portfolio monitoring, a real-time market overview, detailed instrument views and trade execution, with several markets to browse and watchlists to build. We delivered it to VZ.",
+          },
+          {
+            label: "In brief",
+            text: "Bring market information and trading closer to everyday banking, in one platform that works for beginners and professionals.",
+          },
+          {
+            label: "Impact",
+            text: "A trading platform delivered to VZ, with real-time data, customisable dashboards and a mobile version for use on the go. Users gave good feedback.",
+          },
+        ]}
+      />
+    </div>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Goals" title="Where it all began.">
+        <p>
+          The brief was to bring market prices and market information closer to e-banking functions and data, in one
+          platform. The client already had an idea of the main features. We took it as a starting point, not a final
+          list.
+        </p>
+      </SectionHeader>
+      <FeatureColumns
+        items={[
+          {
+            title: "One place for markets and banking",
+            text: "Portfolio, market overview, instrument details and trading together, close to the client’s own banking data.",
+          },
+          {
+            title: "Beginners and professionals",
+            text: "A platform that is approachable for newcomers and keeps the depth experienced traders expect.",
+          },
+          {
+            title: "Everything at a glance",
+            text: "In the moment of buying or selling, users need the important information in front of them to decide.",
+          },
+        ]}
+      />
+    </section>
+
+    <div class="section section--wide">
+      <div class="grid-2 wireframes">
+        {wireframes.map((w) => <Figure src={w.src} alt={w.alt} maxWidth={530} />)}
+      </div>
+    </div>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Process" title="Challenge the list, then prototype.">
+        <p>
+          The client came with an idea of the main features, and we challenged it together. We started by analysing the
+          core features, then used wireframes to visualise how everything could come together.
+        </p>
+        <p>
+          We took our time through the prototype, test and feedback phases, and only started the high-fidelity design
+          once we felt confident in the direction.
+        </p>
+        <p>
+          I designed the dashboard, widgets and instrument view, and ran the prototype tests with internal users and
+          potential clients on the VZ side.
+        </p>
+      </SectionHeader>
+      <Figure src={prototype} alt="High-fidelity prototype of the Trading Workbench dashboard" />
+    </section>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Challenge" title="A lot of data, one decision.">
+        <p>
+          A trading platform has a lot to show at once: real-time prices, charts, news, the client’s portfolio and order
+          entry. At the moment of a trade, the user needs the important parts in one glance. Three things had to work
+          together:
+        </p>
+      </SectionHeader>
+      <FeatureColumns
+        items={[
+          { text: "Give professionals the depth they expect without overwhelming beginners." },
+          { text: "Bring market data and e-banking information into one platform that feels like one product." },
+          { text: "Keep it pleasant enough to use every day." },
+        ]}
+      />
+      <Figure src={dark1} alt="Dark-theme instrument view with live charts" />
+      <Figure src={dark2} alt="Dark-theme market overview with watchlists" />
+    </section>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Solution" title="Flexible and engaging.">
+        <p>
+          The solution gives users an easy way to interact with the platform. Three ideas shaped it: personalisation,
+          interaction and a bit of fun.
+        </p>
+      </SectionHeader>
+      <div class="stack stack--tight">
+        <FeatureBox title="Dashboards that adapt to you">
+          <p slot="text">
+            Users can create and customise multiple dashboards, and choose which portfolio to show, at dashboard or
+            widget level. It suits users who keep different portfolios for different reasons: one for regular checking,
+            another for acting quickly on price changes.
+          </p>
+          <Figure src={dashboards} alt="Dashboard switcher with multiple custom dashboards" maxWidth={440} />
+        </FeatureBox>
+        <FeatureBox title="Drag and drop throughout">
+          <p slot="text">
+            Widgets can be arranged and rearranged on the dashboard, and market instruments can be added straight to a
+            watchlist. Drag and drop works across the whole platform, which makes it feel quick and fun to use.
+          </p>
+          <Figure src={dragAndDrop} alt="Dragging an instrument onto a watchlist" maxWidth={440} />
+        </FeatureBox>
+        <FeatureBox title="Everything at a glance">
+          <p slot="text">
+            Real-time valuation of the portfolio sits next to live market data: prices, news and analyses. The
+            instrument view brings performance and key information together in one place.
+          </p>
+          <Figure src={atAGlance} alt="Instrument view with performance chart and key figures" maxWidth={440} />
+        </FeatureBox>
+      </div>
+    </section>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Outcome & future steps" title="Delivered, and now on the go.">
+        <p>
+          We delivered the platform to VZ. Building on the responsive web version, we later developed a mobile version
+          with reduced functionality, focused on use on the go.
+        </p>
+        <p>
+          VZ presents its trading platform publicly with real-time prices, a customisable workspace and mobile access.
+          The client’s feedback was good: users enjoyed the platform and found it easy to navigate, as beginners and as
+          professionals. Additional features followed, such as maximising widgets that hold a lot of data and matter for
+          decisions.
+        </p>
+        <p class="links">
+          <a href="https://www.vermoegenszentrum.ch/en/investments/custody-accounts-at-vz" target="_blank" rel="noopener"
+            >VZ trading platform <Icon name="arrow-up-right" size={16} /></a
+          >
+          <a href="https://www.ti8m.com/en/products/digital-banking/trading-suite" target="_blank" rel="noopener"
+            >ti&amp;m Trading <Icon name="arrow-up-right" size={16} /></a
+          >
+        </p>
+      </SectionHeader>
+      <Figure src={mobile} alt="Trading Workbench mobile screens" />
+    </section>
+  </CaseStudy>
+
+  <NextProject current="trading_workbench" />
+</BaseLayout>
+
+<style>
+  .wireframes {
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .wireframes :global(img) {
+    border: 1px solid var(--line);
+  }
+</style>

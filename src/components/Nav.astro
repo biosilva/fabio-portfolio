@@ -1,0 +1,63 @@
+---
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/#work", label: "Work" },
+  { href: "/cv", label: "CV" },
+];
+---
+
+<header class="nav container">
+  <a class="logo" href="/" aria-label="Fábio Silva — home">F</a>
+  <nav aria-label="Main">
+    <ul>
+      {
+        links.map((l) => (
+          <li>
+            <a href={l.href} aria-current={l.href === path ? "page" : undefined}>
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1.5rem;
+  }
+  .logo {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0;
+    text-decoration: none;
+  }
+  ul {
+    display: flex;
+    gap: clamp(1.25rem, 3vw, 2.25rem);
+    padding: 0;
+    list-style: none;
+  }
+  ul a {
+    font-size: var(--fs-body);
+    line-height: 1.4;
+    text-decoration: none;
+    text-underline-offset: 4px;
+  }
+  ul a:hover,
+  ul a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+</style>

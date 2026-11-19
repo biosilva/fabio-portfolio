@@ -1,0 +1,206 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CaseStudy from "../components/CaseStudy.astro";
+import CaseHero from "../components/CaseHero.astro";
+import Figure from "../components/Figure.astro";
+import Intro from "../components/Intro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import FeatureColumns from "../components/FeatureColumns.astro";
+import FeatureBox from "../components/FeatureBox.astro";
+import NextProject from "../components/NextProject.astro";
+
+import hero from "../assets/images/true-wealth/hero.png";
+import mobileStrategy from "../assets/images/true-wealth/mobile-strategy.png";
+import initialDirection from "../assets/images/true-wealth/initial-direction.png";
+import evolvedDirection from "../assets/images/true-wealth/evolved-direction.png";
+import outcomeDesktop from "../assets/images/true-wealth/outcome-desktop.png";
+import outcomeMobile from "../assets/images/true-wealth/outcome-mobile.png";
+import cohortLoop from "../assets/images/true-wealth/cohort-release-loop.png";
+import portfoliosOverview from "../assets/images/true-wealth/portfolios-overview.png";
+import clarity from "../assets/images/true-wealth/clarity-at-all-times.png";
+import editMode from "../assets/images/true-wealth/edit-mode.png";
+---
+
+<BaseLayout
+  title="Redesigning True Wealth for 35'000 users — Fábio Silva"
+  description="Case study: redesigning the True Wealth app for 35'000 users, with one strategy across all products, a dedicated mobile experience and a live edit mode."
+>
+  <CaseHero
+    title="Redesigning the True Wealth app for 35'000 users"
+    lead="One investment strategy, many products. A complete redesign that makes the strategy the backbone of the app, with a mobile experience and an edit mode built for how people actually manage their money."
+    meta="Product Designer · True Wealth · 2026"
+  />
+
+  <CaseStudy>
+    <div class="section stack">
+      <Figure src={hero} alt="Redesigned True Wealth investment strategy screen on desktop" priority />
+      <Intro
+        items={[
+          {
+            label: "About",
+            text: "True Wealth is a Swiss digital investment service. People use it to invest across free assets and pillar 3a products. As the range of products grew, the app had to grow with it without losing the bigger picture.",
+          },
+          {
+            label: "In brief",
+            text: "Align a whole organisation on one vision of the new experience, work through many opinions, and commit to a single version.",
+          },
+          {
+            label: "Impact",
+            text: "One holistic strategy across all products, a dedicated mobile experience, and a clearer structure for every user. Raised completion of funding and recurring payments from 25% to 50%, through usability testing and iteration.",
+          },
+        ]}
+      />
+    </div>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Goals" title="Where it all began.">
+        <p>
+          Every new product made the app harder to read as a whole. We needed room to add products while keeping one
+          message visible: one strategy, whatever you invest in.
+        </p>
+      </SectionHeader>
+      <FeatureColumns
+        items={[
+          {
+            title: "Keep the strategy visible",
+            text: "Add new products while the holistic strategy stays visible across all of them.",
+          },
+          {
+            title: "A better edit mode",
+            text: "Let users change their target allocation across the levels of asset classes and see the impact live.",
+          },
+          {
+            title: "A real mobile experience",
+            text: "The old mobile view was the desktop site made responsive. It needed its own design.",
+          },
+        ]}
+      />
+      <Figure src={mobileStrategy} alt="Three mobile screens: portfolio switcher, investment strategy donut and edit mode" />
+    </section>
+
+    <section class="section">
+      <SectionHeader eyebrow="Challenge" title="Alignment was the hard part.">
+        <p>
+          The challenge wasn’t a single screen. Multiple stakeholders had different perspectives on how the new
+          experience should look and work. We needed to build a shared understanding, work through feedback
+          constructively, and agree on one direction.
+        </p>
+      </SectionHeader>
+    </section>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Approach" title="A continuous feedback loop." />
+      <FeatureColumns
+        items={[
+          {
+            icon: "square-play",
+            title: "01. Prototype walkthroughs",
+            text: "Regular walkthroughs helped us review the experience together and surface concerns early.",
+          },
+          {
+            icon: "message-square-more",
+            title: "02. Independent feedback",
+            text: "Stakeholders could explore the prototype on their own and share smaller comments asynchronously.",
+          },
+          {
+            icon: "calendar",
+            title: "03. Focused discussions",
+            text: "We brought bigger topics to meetings to resolve open questions and agree on a shared direction.",
+          },
+        ]}
+      />
+      <div class="grid-2 directions">
+        <Figure
+          src={initialDirection}
+          caption="Initial direction"
+          alt="Initial design direction: strategy and holdings screens"
+          maxWidth={530}
+        />
+        <Figure
+          src={evolvedDirection}
+          caption="Evolved direction"
+          alt="Evolved design direction after stakeholder feedback"
+          maxWidth={530}
+        />
+      </div>
+    </section>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Outcome" title="One shared direction.">
+        <p>
+          After several rounds of feedback and discussion, we aligned on a single version that covered the original
+          requirements and additional needs identified along the way. The holistic view became the foundation of the
+          app.
+        </p>
+      </SectionHeader>
+      <Figure src={outcomeDesktop} alt="Final investment strategy screen on desktop" />
+      <Figure src={outcomeMobile} alt="Final mobile screens showing a drill-down into European equities" />
+    </section>
+
+    <section class="section stack">
+      <SectionHeader eyebrow="Release" title="Rolling out in cohorts.<br />Small steps, real feedback, constant improvement.">
+        <p>
+          Instead of a big-bang launch, we released step by step, starting at 5% of users and widening in stages up to
+          50%. At each stage we collected feedback, identified critical pain points and fixed them before opening the
+          next cohort.
+        </p>
+        <p>
+          The most important finding was about navigation. Several users had trouble finding the product switcher,
+          because we had initially separated products and portfolios. Their comments led us to combine the two into a
+          single switcher, which gives a simpler overview of everything a user holds and removes any doubt about where
+          to look.
+        </p>
+      </SectionHeader>
+      <Figure
+        src={cohortLoop}
+        alt="Four-step release loop: initiate release of a cohort, receive and analyse feedback, address critical points, release again to another cohort"
+      />
+    </section>
+
+    <section class="section stack stack--tight">
+      <h2 class="h2 section-title-left">Features in detail</h2>
+      <FeatureBox title="Portfolios overview">
+        <p slot="text">
+          Every product and every child’s portfolio now lives in one switcher. Users see their total wealth first, then
+          the totals of their other portfolios.
+        </p>
+        <Figure src={portfoliosOverview} alt="Portfolio switcher listing all products and portfolios" maxWidth={440} />
+      </FeatureBox>
+      <FeatureBox title="Clarity at all times">
+        <p slot="text">
+          On desktop, the product &amp; portfolio switcher sits in the header: always visible, one click away. With
+          data-heavy screens, it keeps users oriented.
+        </p>
+        <Figure src={clarity} alt="Desktop header with the product and portfolio switcher open" maxWidth={440} />
+      </FeatureBox>
+      <FeatureBox title="Edit mode, the same on mobile and desktop" layout="stack">
+        <p slot="text">
+          For users who want to customise their strategy, edit mode now works the same on both desktop and mobile. The
+          target allocation slider, which sets the target for a specific asset class, is available at all times on
+          every screen. That lets users see the effect of a change right where it matters, such as the projected return
+          or the instruments behind it. This delivers on the original goal of seeing the impact of a change live.
+        </p>
+        <Figure src={editMode} alt="Three mobile screens of edit mode with the target allocation slider" maxWidth={880} />
+      </FeatureBox>
+    </section>
+
+    <section class="section">
+      <SectionHeader eyebrow="Reflections" title="What I'd do differently">
+        <p>
+          Along the way we added extras that weren’t in the original scope. They were nice to have, but they stretched
+          the project and pushed back go-live. In hindsight, I’d ship the agreed core first and add the rest step by
+          step. Users would have had the new experience sooner, and real feedback would have decided what to build next.
+        </p>
+      </SectionHeader>
+    </section>
+  </CaseStudy>
+
+  <NextProject current="redesign_tw" />
+</BaseLayout>
+
+<style>
+  .directions {
+    width: min(1100px, calc(100vw - 2 * var(--gutter)));
+    justify-self: center;
+  }
+</style>
